@@ -1,0 +1,62 @@
+# =====================
+# 🌐 FRONTEND (React/Vite)
+# =====================
+
+# Node modules
+/frontend/node_modules/
+
+# Build output
+/frontend/dist/
+/frontend/build/
+
+# Environment files
+/frontend/.env
+/frontend/.env.local
+/frontend/.env.*.local
+
+# Logs
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+
+# Editor & OS junk
+/frontend/.DS_Store
+/frontend/Thumbs.db
+/frontend/.vscode/
+frontend/.idea/
+
+
+# =====================
+# BACKEND (ExpressJS + Sequelize)
+# =====================
+
+# Node modules
+/backend/node_modules/
+
+# Environment
+/backend/.env
+
+# Logs
+/backend/npm-debug.log*
+/backend/yarn-debug.log*
+/backend/yarn-error.log*
+
+# Sequelize & DB
+/backend/*.sqlite
+/backend/*.log
+
+# Build
+/backend/dist/
+
+# Editor & OS junk
+/backend/.DS_Store
+/backend/Thumbs.db
+/backend/.vscode/
+backend/.idea/
+
+# IDEs
+.vscode/
+.idea/
+
+# Log files
+*.log
