@@ -38,7 +38,7 @@ const Login = async (req, res) => {
             expiresIn: "1d"
         });
 
-        await updateData(User, userId, { token: refreshToken });
+        await updateData(User, userId, { token: accessToken });
 
         res.cookie("refreshToken", refreshToken, {
             httpOnly: true,
