@@ -1,19 +1,14 @@
-export const BookCategoryList = [
-    { value: "action", label: "Action" },
-    { value: "comedy", label: "Comedy" },
-    { value: "drama", label: "Drama" },
-    { value: "horror", label: "Horror" },
-    { value: "romance", label: "Romance" },
-];
-
+const BASE_URL = "http://localhost:3000/api";
 
 export const APIEndpoint = {
-    BASE_URL: "http://localhost:3000/api",
 
+    BASE_URL, 
+    
     //  Books
     BOOK: "books",
     BOOKS: "books",
     BOOK_BY_ID: (id = ":id") => `books/${id}`,
+    IMAGE_URL: `${BASE_URL}/img`,
 
     //  User
     USER: "user",
@@ -21,7 +16,7 @@ export const APIEndpoint = {
     REGISTER: "register",
     LOGOUT: "logout",
 
-    //  Categories
+    // Categories
     CATEGORIES: "categories",
     CATEGORY_BY_ID: (id = ":id") => `categories/${id}`,
 };
