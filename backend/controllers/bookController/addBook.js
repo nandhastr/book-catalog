@@ -5,6 +5,8 @@ const addBook = async (req, res) => {
     try {
         const { categoryId, title, author, description, year } = req.body;
         
+        console.log("REQ.FILE", req.file);
+
         const imgPath = req.file ? `${req.file.filename}`: null;
 
         const data = await createData(Books, { categoryId, title, author, description, year, imgUrl: imgPath });
