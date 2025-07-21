@@ -15,7 +15,7 @@ const app = express();
 app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
-
+app.use("/api/img", express.static("assets/img"));
 
 
 app.use("/api", authRoutes);
