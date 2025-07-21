@@ -42,7 +42,7 @@ const Navbar = () => {
                                 Home
                             </Link>
                             {!isLogIn && (
-                                <Link to={APIEndpoint.LOGIN} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <Link to="/login" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                     Login
                                 </Link>
                             )}

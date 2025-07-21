@@ -7,6 +7,10 @@ import MainLayout from "./components/layouts/mainLayout";
 import Home from "./pages/Home";
 import Logout from "./pages/auth/Logout.jsx";
 import ProtectedRoute from "../middleware/AuthMidlleware.jsx";
+import DashboardAdminUser from "./pages/DashboardAdminUser/index.jsx";
+import AdminLayout from "./components/layouts/adminLayout/index.jsx";
+import BookTable from "./pages/BookPage/index.jsx";
+import BookPage from "./pages/BookPage/index.jsx";
 
 function App() {
     return (
@@ -43,6 +47,23 @@ function App() {
                             <ProtectedRoute>
                                 <Logout />
                             </ProtectedRoute>
+                        }
+                    />
+
+                    <Route
+                        path="/dashboard"
+                        element={
+                            <AdminLayout>
+                                <DashboardAdminUser />
+                            </AdminLayout>
+                        }
+                    />
+                    <Route
+                        path="/book-management"
+                        element={
+                            <AdminLayout>
+                                <BookPage/>
+                            </AdminLayout>
                         }
                     />
                 </Routes>

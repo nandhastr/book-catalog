@@ -2,6 +2,7 @@ import axios from "axios";
 import { APIEndpoint } from "../enum/APIendPoint";
 
 const BASE_URL = APIEndpoint.BASE_URL;
+
 const authService = {
     register: async ({ name, email, password }) => {
         return await axios.post(`${BASE_URL}/${APIEndpoint.REGISTER}`, {
@@ -26,6 +27,14 @@ const authService = {
                 Authorization: `Bearer ${token}`,
             },
             withCredentials: true,
+        });
+    },
+    getMe: async () => {
+        const token = localStorage.getItem("accessToken");
+        return await axios.get(`${BASE_URL}/me`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
         });
     },
 };
