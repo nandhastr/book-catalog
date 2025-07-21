@@ -1,9 +1,8 @@
 const BASE_URL = "http://localhost:3000/api";
 
 export const APIEndpoint = {
-
-    BASE_URL, 
-    
+    BASE_URL,
+    HOME: "/",
     //  Books
     BOOK: "books",
     BOOKS: "books",
@@ -14,7 +13,7 @@ export const APIEndpoint = {
     USER: "user",
     LOGIN: "login",
     REGISTER: "register",
-    LOGOUT: "logout",
+    LOGOUT: `logout`,
 
     // Categories
     CATEGORIES: "categories",

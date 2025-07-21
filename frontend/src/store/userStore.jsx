@@ -1,5 +1,7 @@
 import { create } from "zustand";
 import apiService from "../services/crudService";
+import axios from "axios";
+import { APIEndpoint } from "../../enum/APIendPoint";
 
 const userAPI = apiService("users");
 
@@ -37,6 +39,26 @@ const useUserStore = create((set) => ({
     deleteUser: async (id) => {
         try {
             await userAPI.remove(id);
+        } catch (err) {
+            set({ error: err.message });
+        }
+    },
+    logoutUser: async () => {
+        try {
+            const token = localStorage.getItem("accessToken");
+            if (!token) throw new Error("Token tidak ditemukan");
+
+            await axios.post(`${APIEndpoint.BASE_URL}/logout`, null, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+                withCredentials: true,
+            });
+
+
+
+            localStorage.removeItem("accessToken");
+            localStorage.removeItem("refreshToken");
         } catch (err) {
             set({ error: err.message });
         }

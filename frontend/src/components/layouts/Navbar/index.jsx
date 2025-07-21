@@ -6,6 +6,7 @@ import { APIEndpoint } from "../../../../enum/APIendPoint.js";
 const Navbar = () => {
     const menuRef = useRef();
     const [menuOpen, setMenuOpen] = useState(false);
+    const isLogIn = !!localStorage.getItem("accessToken");
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -40,9 +41,17 @@ const Navbar = () => {
                             <Link to="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                 Home
                             </Link>
-                            <Link to={APIEndpoint.LOGIN} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                Login
-                            </Link>
+                            {!isLogIn && (
+                                <Link to={APIEndpoint.LOGIN} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    Login
+                                </Link>
+                            )}
+
+                            {isLogIn && (
+                                <Link to="/logout" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    Logout
+                                </Link>
+                            )}
                         </div>
                     )}
                 </div>
@@ -61,11 +70,27 @@ const Navbar = () => {
             {menuOpen && (
                 <div className="mt-4 md:hidden">
                     <div className="flex flex-col space-y-4">
-                        <button className="flex items-center space-x-2 text-gray-700 hover:text-black">
-                            <img src="https://i.pravatar.cc/24" className="w-6 h-6 rounded-full" alt="profile" />
-                            <span>Profile</span>
-                        </button>
+                        {isLogIn && (
+                            <button className="flex items-center space-x-2 text-gray-700 hover:text-black">
+                                <img src="../../../../public/user.png" className="w-6 h-6 rounded-full" alt="profile" />
+                                <span>Profile</span>
+                            </button>
+                        )}
                     </div>
+                    <Link to="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                        Home
+                    </Link>
+                    {!isLogIn && (
+                        <Link to={APIEndpoint.LOGIN} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            Login
+                        </Link>
+                    )}
+
+                    {isLogIn && (
+                        <Link to="/logout" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            Logout
+                        </Link>
+                    )}
                 </div>
             )}
         </nav>

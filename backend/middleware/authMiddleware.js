@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const AuthMiddleWare = async (req, res, next) => {
-    const header = req.headers["authorization"];
+    const header = req.headers.authorization;
     const token = header && header.split(" ")[1];
 
     if (!token) {
