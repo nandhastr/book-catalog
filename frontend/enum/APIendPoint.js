@@ -3,6 +3,7 @@ const BASE_URL = "http://localhost:3000/api";
 export const APIEndpoint = {
     BASE_URL,
     HOME: "/",
+    DASHBOARD: "/dashboard",
     //  Books
     BOOK: "books",
     BOOKS: "books",

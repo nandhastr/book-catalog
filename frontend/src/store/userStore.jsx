@@ -1,14 +1,20 @@
 import { create } from "zustand";
-import apiService from "../services/crudService";
 import axios from "axios";
+
 import { APIEndpoint } from "../../enum/APIendPoint";
+import apiService from "../../service/apiService";
 
 const userAPI = apiService("users");
 
 const useUserStore = create((set) => ({
     users: [],
+    currentUser: null,
     loading: false,
     error: null,
+    token: null,
+
+    setCurrentUser: (name) => set({ currentUser: name }),
+    setToken: (token) => set({ token }),
 
     fetchUsers: async () => {
         set({ loading: true });
@@ -43,6 +49,7 @@ const useUserStore = create((set) => ({
             set({ error: err.message });
         }
     },
+
     logoutUser: async () => {
         try {
             const token = localStorage.getItem("accessToken");
@@ -55,14 +62,12 @@ const useUserStore = create((set) => ({
                 withCredentials: true,
             });
 
-
-
             localStorage.removeItem("accessToken");
             localStorage.removeItem("refreshToken");
+            set({ currentUser: null });
         } catch (err) {
             set({ error: err.message });
         }
     },
 }));
-
 export default useUserStore;

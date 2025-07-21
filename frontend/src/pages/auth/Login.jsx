@@ -12,21 +12,15 @@ const Login = () => {
             const res = await authService.login({ email, password });
             localStorage.setItem("accessToken", res.data.accessToken);
             alert("Login berhasil!");
-            navigate(`${APIEndpoint.HOME}`);
+            navigate(APIEndpoint.DASHBOARD);
         } catch (error) {
             alert("Login gagal: " + (error.response?.data?.error || error.message));
         }
-    }
-
+    };
 
     return (
         <div className="min-h-screen bg-cover bg-center flex items-center justify-center">
-            <AuthForm
-                title="Masuk"
-                subtitle="Selamat Datang Kembali"
-                buttonText="Masuk"
-                isLogin={true}
-                onSubmit={handleSubmit} />
+            <AuthForm title="Masuk" subtitle="Selamat Datang Kembali" buttonText="Masuk" isLogin={true} onSubmit={handleSubmit} />
         </div>
     );
 };
