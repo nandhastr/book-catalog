@@ -18,7 +18,9 @@ DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=your_password
 DB_NAME=book_catalog
-JWT_SECRET=your_secret_key
+
+ACCESS_TOKEN=your_seret
+REFRESH_TOKEN=your_secret
 
 Setelah itu, buat database book_catalog di MySQL:
 
