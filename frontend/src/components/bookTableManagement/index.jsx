@@ -1,6 +1,6 @@
 import React from "react";
 
-const DataTable = ({ books, onAdd, onEdit, onDelete }) => {
+const BookTable = ({ books, onAdd, onEdit, onDelete }) => {
     return (
         <div className="p-4">
             <div className="flex justify-between items-center mb-4">
@@ -61,4 +61,4 @@ const DataTable = ({ books, onAdd, onEdit, onDelete }) => {
     );
 };
 
-export default DataTable;
+export default BookTable;

@@ -41,6 +41,12 @@ const Navbar = () => {
                             <Link to="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                 Home
                             </Link>
+                            {isLogIn && (
+                                <Link to="/dashboard" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                    Dashboard
+                                </Link>
+                            )}
+
                             {!isLogIn && (
                                 <Link to="/login" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                     Login

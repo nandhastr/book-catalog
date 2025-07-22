@@ -11,6 +11,9 @@ const Login = () => {
         try {
             const res = await authService.login({ email, password });
             localStorage.setItem("accessToken", res.data.accessToken);
+           localStorage.setItem("role", res.data.user.role);
+            localStorage.setItem("user", JSON.stringify(res.data.user));
+
             alert("Login berhasil!");
             navigate(APIEndpoint.DASHBOARD);
         } catch (error) {

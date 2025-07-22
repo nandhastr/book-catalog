@@ -16,7 +16,8 @@ const Logout = () => {
 
                 await authService.logoutAPI();
                 localStorage.removeItem("accessToken");
-                localStorage.removeItem("refreshToken"); 
+                localStorage.removeItem("role");
+                localStorage.removeItem("user");
                 navigate("/");
             } catch (error) {
                 console.error("Logout error:", error.response?.data || error.message);
