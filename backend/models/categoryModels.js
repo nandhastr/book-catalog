@@ -10,7 +10,7 @@ const Category = db.define(
             autoIncrement: true,
         },
         name_category: {
-            type: DataTypes.ENUM("romance", "comedy", "action", "drama", "horror"),
+            type: DataTypes.STRING,
         }
     },
     {

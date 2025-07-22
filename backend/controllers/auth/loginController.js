@@ -44,7 +44,14 @@ const Login = async (req, res) => {
             httpOnly: true,
             maxAge: 24 * 60 * 60 * 1000,
         })
-        res.status(200).send({ message: "Login berhasil", accessToken });
+        res.status(200).send({
+            message: "Login berhasil",
+            accessToken,
+            user: {
+                role: existUser.role,
+            },
+        });
+
      } catch (error) {
         res.status(500).send({ msg: `Terjadi kesalahan: ${error.message}` });
     }

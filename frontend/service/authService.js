@@ -4,12 +4,12 @@ import { APIEndpoint } from "../enum/APIendPoint";
 const BASE_URL = APIEndpoint.BASE_URL;
 
 const authService = {
-    register: async ({ name, email, password }) => {
+    register: async ({ name, email, password, role }) => {
         return await axios.post(`${BASE_URL}/${APIEndpoint.REGISTER}`, {
             name,
             email,
             password,
-            role: "user",
+            role,
         });
     },
 
