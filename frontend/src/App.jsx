@@ -9,8 +9,9 @@ import Logout from "./pages/auth/Logout.jsx";
 import ProtectedRoute from "../middleware/AuthMidlleware.jsx";
 import DashboardAdminUser from "./pages/DashboardAdminUser/index.jsx";
 import AdminLayout from "./components/layouts/adminLayout/index.jsx";
-import BookTable from "./pages/BookPage/index.jsx";
-import BookPage from "./pages/BookPage/index.jsx";
+import BookPageManagement from "./pages/BookPage/index.jsx";
+import CategoryPageManagement from "./pages/categoryPage/index.jsx";
+import UserPageManagement from "./pages/userPage/index.jsx";
 
 function App() {
     return (
@@ -54,7 +55,9 @@ function App() {
                         path="/dashboard"
                         element={
                             <AdminLayout>
-                                <DashboardAdminUser />
+                                <ProtectedRoute>
+                                    <DashboardAdminUser />
+                                </ProtectedRoute>
                             </AdminLayout>
                         }
                     />
@@ -62,7 +65,29 @@ function App() {
                         path="/book-management"
                         element={
                             <AdminLayout>
-                                <BookPage/>
+                                <ProtectedRoute>
+                                    <BookPageManagement />
+                                </ProtectedRoute>
+                            </AdminLayout>
+                        }
+                    />
+                    <Route
+                        path="/category-management"
+                        element={
+                            <AdminLayout>
+                                <ProtectedRoute>
+                                    <CategoryPageManagement />
+                                </ProtectedRoute>
+                            </AdminLayout>
+                        }
+                    />
+                    <Route
+                        path="/user-management"
+                        element={
+                            <AdminLayout>
+                                <ProtectedRoute>
+                                    <UserPageManagement />
+                                </ProtectedRoute>
                             </AdminLayout>
                         }
                     />
