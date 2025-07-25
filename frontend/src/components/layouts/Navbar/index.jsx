@@ -1,16 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { APIEndpoint } from "../../../../enum/APIendPoint.js";
 
 const Navbar = () => {
     const menuRef = useRef();
+    const menuMboileRef = useRef();
     const [menuOpen, setMenuOpen] = useState(false);
     const isLogIn = !!localStorage.getItem("accessToken");
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (menuRef.current && !menuRef.current.contains(event.target)) {
+            if (menuRef.current && !menuRef.current.contains(event.target) && menuMboileRef.current && !menuMboileRef.current.contains(event.target)
+            ) {
                 setMenuOpen(false);
             };
         };
@@ -32,29 +33,29 @@ const Navbar = () => {
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center  text-gray-700 relative" ref={menuRef}>
                     <button onClick={() => setMenuOpen(!menuOpen)} className="hover:text-black cursor-pointer">
-                        <img src="../../../../public/user.png" className="w-6 h-6 rounded-full inset-ring-amber-500" alt="profile" />
+                        <img src="/user.png" className="w-6 h-6 rounded-full inset-ring-amber-500" alt="profile" />
                     </button>
 
                     {/* dropdown */}
                     {menuOpen && (
                         <div className="absolute top-[110%] right-0 mt-2 w-36 bg-white rounded-md shadow-lg py-2 z-50 transform origin-top-right duration-500 ease-in-out">
-                            <Link to="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <Link to="/" onClick={() => setMenuOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                 Home
                             </Link>
                             {isLogIn && (
-                                <Link to="/dashboard" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <Link to="/dashboard" onClick={() => setMenuOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                     Dashboard
                                 </Link>
                             )}
 
                             {!isLogIn && (
-                                <Link to="/login" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
+                                <Link to="/login" onClick={() => setMenuOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
                                     Login
                                 </Link>
                             )}
 
                             {isLogIn && (
-                                <Link to="/logout" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
+                                <Link to="/logout" onClick={() => setMenuOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
                                     Logout
                                 </Link>
                             )}
@@ -63,8 +64,8 @@ const Navbar = () => {
                 </div>
 
                 {/* Mobile Menu Button */}
-                <div className="md:hidden">
-                    <button onClick={() => setMenuOpen(!menuOpen)} className="text-gray-700 focus:outline-none">
+                <div className="md:hidden relative" ref={menuMboileRef}>
+                    <button onClick={() => setMenuOpen(!menuOpen)} className="text-gray-700 focus:outline-none cursor-pointer">
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
@@ -74,26 +75,24 @@ const Navbar = () => {
 
             {/* Mobile Dropdown */}
             {menuOpen && (
-                <div className="mt-4 md:hidden">
-                    <div className="flex flex-col space-y-4">
-                        {isLogIn && (
-                            <button className="flex items-center space-x-2 text-gray-700 hover:text-black">
-                                <img src="../../../../public/user.png" className="w-6 h-6 rounded-full" alt="profile" />
-                                <span>Profile</span>
-                            </button>
-                        )}
-                    </div>
-                    <Link to="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                <div className="md:hidden mt-4 space-y-2">
+                    <Link to="/" onClick={() => setMenuOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                         Home
                     </Link>
+                    {isLogIn && (
+                        <Link to="/dashboard" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            Dashboard
+                        </Link>
+                    )}
+
                     {!isLogIn && (
-                        <Link to={APIEndpoint.LOGIN} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                        <Link to="/login" onClick={() => setMenuOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
                             Login
                         </Link>
                     )}
 
                     {isLogIn && (
-                        <Link to="/logout" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                        <Link to="/logout" onClick={() => setMenuOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
                             Logout
                         </Link>
                     )}
