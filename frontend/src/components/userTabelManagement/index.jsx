@@ -3,7 +3,6 @@ import React from "react";
 const UserTable = ({ users, onEdit, onDelete }) => {
     return (
         <div className="p-4">
-           
             <div className="overflow-x-auto">
                 <table className="min-w-full border-b border-gray-200">
                     <thead>

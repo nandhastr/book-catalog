@@ -13,9 +13,8 @@ const initialForm = {
 };
 
 const BookPageManagement = () => {
-    const { books, fetchBooks, createBook, updateBook, deleteBook } = useBookStore();
+    const { books, fetchBooks, createBook, updateBook, deleteBook, error, clearError } = useBookStore();
     const { categories, fetchCategories } = useCategoryStore();
-
 
     const [formData, setFormData] = useState(initialForm);
     const [isEdit, setIsEdit] = useState(false);
@@ -23,8 +22,8 @@ const BookPageManagement = () => {
     const [editId, setEditId] = useState(null);
 
     useEffect(() => {
-      fetchBooks();
-       fetchCategories();
+        fetchBooks();
+        fetchCategories();
     }, [fetchBooks, fetchCategories]);
 
     const handleChange = (e) => {
@@ -38,15 +37,20 @@ const BookPageManagement = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        clearError();
 
         const payload = new FormData();
         Object.entries(formData).forEach(([key, val]) => payload.append(key, val));
 
+
+        let success = false;
         if (isEdit) {
-            await updateBook(editId, payload);
+            success =await updateBook(editId, payload);
         } else {
-            await createBook(payload);
+            success =await createBook(payload);
         }
+
+        if (!success) return;
 
         await fetchBooks();
         setFormData(initialForm);
@@ -71,7 +75,7 @@ const BookPageManagement = () => {
             description: book.description,
             year: book.year,
             categoryId: book.categoryId,
-            imgUrl: null, 
+            imgUrl: null,
         });
     };
 
@@ -89,6 +93,7 @@ const BookPageManagement = () => {
             {showForm && (
                 <form onSubmit={handleSubmit} className="mt-6 p-4 bg-gray-100 rounded-md shadow-md max-w-xl mx-auto" encType="multipart/form-data">
                     <h2 className="text-lg font-bold mb-4">{isEdit ? "Edit Buku" : "Tambah Buku"}</h2>
+                    {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
 
                     <div className="mb-4">
                         <label htmlFor="title" className="block font-medium mb-1">

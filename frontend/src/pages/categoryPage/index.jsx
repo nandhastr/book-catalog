@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import useCategoryStore from './../../store/categoryStore';
-import CategoryTable from './../../components/categoryTableManagement';
+import useCategoryStore from "./../../store/categoryStore";
+import CategoryTable from "./../../components/categoryTableManagement";
 
 const CategoryPageManagement = () => {
     const { categories, fetchCategories, createCategory, updateCategory, deleteCategory } = useCategoryStore();

@@ -5,7 +5,7 @@ const Sidebar = () => {
     const role = localStorage.getItem("role");
 
     return (
-        <aside className="bg-blue-600 text-white w-64 h-screen p-4">
+        <aside className="bg-blue-600 text-white w-64 p-4  ">
             <div className="mb-6">
                 <h2 className="text-2xl font-bold">{role === "admin" ? "Admin Panel" : "User Panel"}</h2>
             </div>

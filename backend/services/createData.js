@@ -6,5 +6,5 @@ const create = async (model, data) => {
         console.error("Error saat membuat data:", error.message);
         throw error;
     }
-}
+};
 export default create;

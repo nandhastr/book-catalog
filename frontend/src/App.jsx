@@ -9,7 +9,7 @@ import Logout from "./pages/auth/Logout.jsx";
 import ProtectedRoute from "../middleware/AuthMidlleware.jsx";
 import DashboardAdminUser from "./pages/DashboardAdminUser/index.jsx";
 import AdminLayout from "./components/layouts/adminLayout/index.jsx";
-import BookPageManagement from "./pages/BookPage/index.jsx";
+import BookPageManagement from "./pages/bookPage/index.jsx";
 import CategoryPageManagement from "./pages/categoryPage/index.jsx";
 import UserPageManagement from "./pages/userPage/index.jsx";
 

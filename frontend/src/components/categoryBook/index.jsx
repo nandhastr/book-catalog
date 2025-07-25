@@ -39,11 +39,7 @@ const CategoryBook = () => {
                         Buku dalam kategori: <span className="text-blue-600">{selectedCategory.name_category}</span>
                     </h3>
                     <div className="flex flex-grow justify-center relative">
-                        {loading ?
-                            <p className="text-gray-500">Loading...</p> :
-                            Array.isArray(booksByCategory) && booksByCategory.length > 0 ?
-                                <CardBook data={booksByCategory} loading={loading} limit={showAll ? null : 10} /> :
-                                <p className="text-gray-500 italic">Belum ada buku di kategori ini.</p>}
+                        {loading ? <p className="text-gray-500">Loading...</p> : Array.isArray(booksByCategory) && booksByCategory.length > 0 ? <CardBook data={booksByCategory} loading={loading} limit={showAll ? null : 10} /> : <p className="text-gray-500 italic">Belum ada buku di kategori ini.</p>}
                         <button onClick={handleLihatSemua} className="absolute top-0 right-0 px-1 py-1 bg-green-600 text-white text-[0.5rem] rounded hover:bg-[#fdf2ec]  hover:text-gray-500 transition-all duration-500">
                             Lihat Semua
                         </button>

@@ -7,13 +7,13 @@ const deleteBook = async (req, res) => {
         const result = await deleteData(Books, id);
 
         if (!result) {
-            return res.status(404).send({error: "buku tidak ditemukan"});
+            return res.status(404).send({ error: "buku tidak ditemukan" });
         } else {
-            return res.status(200).send({message: "buku berhasil dihapus"});
+            return res.status(200).send({ message: "buku berhasil dihapus" });
         }
     } catch (error) {
-        res.status(500).send({error: "gagal menghapus buku"});
+        res.status(500).send({ error: "gagal menghapus buku" });
     }
-}
+};
 
 export default deleteBook;

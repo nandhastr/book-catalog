@@ -39,7 +39,7 @@ const Register = async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const hasPassword = await bcrypt.hash(password, salt);
 
-        const newData = await createData(User, { name, email, password: hasPassword, role, token:verifyToken });
+        const newData = await createData(User, { name, email, password: hasPassword, role, token: verifyToken });
         res.status(201).send(newData);
     } catch (error) {
         res.status(500).send({ error: "Registrasi gagal" });

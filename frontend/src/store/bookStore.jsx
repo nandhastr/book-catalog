@@ -1,7 +1,6 @@
 import { create } from "zustand";
-import apiService from './../../service/apiService.jsx';
+import apiService from "./../../service/apiService.jsx";
 import { APIEndpoint } from "../../enum/APIendPoint.js";
-
 
 const bookAPI = apiService("books");
 
@@ -25,7 +24,7 @@ const useBookStore = create((set) => ({
         set({ loading: true });
         try {
             const res = await bookAPI.getByCategory(categoryId);
-            set({ booksByCategory: res.data, loading: false }); 
+            set({ booksByCategory: res.data, loading: false });
         } catch (err) {
             set({ error: err.message, loading: false });
         }
@@ -43,16 +42,29 @@ const useBookStore = create((set) => ({
     createBook: async (data) => {
         try {
             await bookAPI.create(data);
+            alert("Buku berhasil ditambahkan!");
+            set({ error: null })
+            return true;
         } catch (err) {
-            set({ error: err.message });
+            const message = err.response?.data.error || err.response?.data?.message || err.message;
+            set({ error: typeof message === "string" ? message : JSON.stringify(message) });
+            return false;
+
         }
     },
 
+    
     updateBook: async (id, data) => {
         try {
             await bookAPI.update(id, data);
+             alert("Buku berhasil diupdate!");
+             set({ error: null });
+             return true;
         } catch (err) {
             set({ error: err.message });
+             const message = err.response?.data.error || err.response?.data?.message || err.message;
+             set({ error: typeof message === "string" ? message : JSON.stringify(message) });
+             return false;
         }
     },
 
@@ -63,6 +75,8 @@ const useBookStore = create((set) => ({
             set({ error: err.message });
         }
     },
+
+    clearError: ()=> set({error: null})
 }));
 
 export default useBookStore;
