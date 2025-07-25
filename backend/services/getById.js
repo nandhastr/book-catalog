@@ -1,4 +1,4 @@
-const getById =  async (model, id) => {
+const getById = async (model, id) => {
     try {
         const record = await model.findByPk(id);
         if (!record) {
@@ -8,9 +8,7 @@ const getById =  async (model, id) => {
     } catch (error) {
         console.error("Error saat mengambil data:", error.message);
         throw error;
-        
     }
-}
-
+};
 
 export default getById;

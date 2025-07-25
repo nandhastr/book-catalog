@@ -7,8 +7,9 @@ const BreadCrumb = () => {
             <div className="bg-black opacity-70 w-full h-full absolute  "></div>
 
             <div className="container mx-auto ">
-                <p className="text-lg italic text-white absolute -translate-y-1/2  z-10">
-                    "Dengan budi pekerti, tiap-tiap manusia berdiri sebagai manusia merdeka (berpribadi), yang dapat memerintah atau menguasai diri sendiri. Inilah manusia beradab dan itulah maksud dan tujuan pendidikan dalam garis besarnya." - Ki Hajar Dewantara. </p>
+                <p className=" text-md md:text-lg italic text-white absolute -translate-y-1/2  z-10">
+                    "Dengan budi pekerti, tiap-tiap manusia berdiri sebagai manusia merdeka (berpribadi), yang dapat memerintah atau menguasai diri sendiri. Inilah manusia beradab dan itulah maksud dan tujuan pendidikan dalam garis besarnya." - Ki Hajar Dewantara.{" "}
+                </p>
             </div>
         </div>
     );

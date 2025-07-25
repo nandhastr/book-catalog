@@ -1,7 +1,6 @@
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 
-
 dotenv.config();
 
 const AuthMiddleWare = async (req, res, next) => {
@@ -17,7 +16,7 @@ const AuthMiddleWare = async (req, res, next) => {
         req.user = decoded;
         next();
     } catch (error) {
-        return res.status(403).json({ message: "Token tidak valid atau kadaluarsa" });
+        return res.status(401).json({ message: error.message }); 
     }
 };
 

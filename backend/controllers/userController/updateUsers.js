@@ -5,11 +5,10 @@ const updateUser = async (req, res) => {
     try {
         const { id } = req.params;
         const { name, email, role } = req.body;
-        
+
         if (!name || !email || !role) {
             return res.status(400).json({ message: "Field tidak boleh kosong" });
         }
-
 
         const user = await update(User, id, { name, email, role });
         if (!user) return res.status(404).json({ message: "User not found" });

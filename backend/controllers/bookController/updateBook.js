@@ -18,19 +18,18 @@ const updateBook = async (req, res) => {
 
         if (imgPath && oldData.imgUrl) {
             const oldImgPath = path.join("assets", "img", oldData.imgUrl);
-            
-            if(fs.existsSync(oldImgPath)) {
+
+            if (fs.existsSync(oldImgPath)) {
                 fs.unlinkSync(oldImgPath);
             }
         }
 
         const data = await updateData(Books, id, { categoryId, title, author, description, year, imgUrl: imgPath || oldData.imgUrl });
 
-        res.status(200).send({"message": "Buku berhasil diupdate", "data": data});
-
+        res.status(200).send({ message: "Buku berhasil diupdate", data: data });
     } catch (error) {
         res.status(500).send({ error: "Gagal mengupdate buku" });
     }
-}
+};
 
 export default updateBook;

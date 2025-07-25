@@ -25,25 +25,18 @@ const Login = async (req, res) => {
         const matchPassword = await bcrypt.compare(password, existUser.password);
 
         if (!matchPassword) {
-           return res.status(401).send({ error: "Password salah" });
+            return res.status(401).send({ error: "Password salah" });
         }
 
         const userId = existUser.id;
 
         const accessToken = jwt.sign({ userId, email }, process.env.ACCESS_TOKEN, {
-            expiresIn: "30m"
-        });
-
-        const refreshToken = jwt.sign({ userId, email }, process.env.REFRESH_TOKEN, {
-            expiresIn: "1d"
+            expiresIn: "30m", // 30 menit
         });
 
         await updateData(User, userId, { token: accessToken });
 
-        res.cookie("refreshToken", refreshToken, {
-            httpOnly: true,
-            maxAge: 24 * 60 * 60 * 1000,
-        })
+    
         res.status(200).send({
             message: "Login berhasil",
             accessToken,
@@ -51,8 +44,7 @@ const Login = async (req, res) => {
                 role: existUser.role,
             },
         });
-
-     } catch (error) {
+    } catch (error) {
         res.status(500).send({ msg: `Terjadi kesalahan: ${error.message}` });
     }
 };

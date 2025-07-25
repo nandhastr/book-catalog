@@ -8,6 +8,6 @@ const getAll = async (model) => {
         console.error("Error fetching data:", error.message);
         throw error;
     }
-}
+};
 
 export default getAll;

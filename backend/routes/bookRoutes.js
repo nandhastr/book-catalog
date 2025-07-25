@@ -8,13 +8,11 @@ import fileMiddleware from "../middleware/fileMiddleware.js";
 import deleteBook from "../controllers/bookController/deleteBook.js";
 import AuthMiddleWare from "../middleware/authMiddleware.js";
 
-
 const router = express.Router();
 
 router.get("/books", getBook);
 router.post("/books", AuthMiddleWare, upload.single("imgUrl"), fileMiddleware, addBook);
-router.put("/books/:id",AuthMiddleWare,  upload.single("imgUrl"), fileMiddleware, updateBook);
+router.put("/books/:id", AuthMiddleWare, upload.single("imgUrl"), fileMiddleware, updateBook);
 router.delete("/books/:id", AuthMiddleWare, deleteBook);
-
 
 export default router;
