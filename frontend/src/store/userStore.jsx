@@ -39,7 +39,7 @@ const useUserStore = create((set) => ({
     updateUser: async (id, data) => {
         try {
             await userAPI.update(id, data);
-            const res = await userAPI.getAll(); 
+            const res = await userAPI.getAll();
             set({ users: res.data });
         } catch (err) {
             set({ error: err.message });
@@ -49,7 +49,7 @@ const useUserStore = create((set) => ({
     deleteUser: async (id) => {
         try {
             await userAPI.remove(id);
-            const res = await userAPI.getAll(); 
+            const res = await userAPI.getAll();
             set({ users: res.data });
         } catch (err) {
             set({ error: err.message });

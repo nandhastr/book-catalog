@@ -1,6 +1,6 @@
-import getById from './getById.js';
+import getById from "./getById.js";
 
-const update = async(model, id, updates) => {
+const update = async (model, id, updates) => {
     try {
         const record = await getById(model, id);
         if (!record) {
@@ -12,7 +12,6 @@ const update = async(model, id, updates) => {
         console.error("Error saat memperbarui data:", error.message);
         throw error;
     }
-}
-
+};
 
 export default update;

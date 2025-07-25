@@ -22,7 +22,7 @@ const Navbar = () => {
     }, []);
 
     return (
-        <nav className="bg-white shadow-md  px-4 py-3">
+        <nav className="bg-white shadow-md  px-4 py-3  w-full">
             <div className="flex items-center justify-between">
                 {/* Logo */}
                 <div className="text-xl font-bold text-gray-800">
@@ -31,7 +31,7 @@ const Navbar = () => {
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center  text-gray-700 relative" ref={menuRef}>
-                    <button onClick={() => setMenuOpen(!menuOpen)} className="hover:text-black">
+                    <button onClick={() => setMenuOpen(!menuOpen)} className="hover:text-black cursor-pointer">
                         <img src="../../../../public/user.png" className="w-6 h-6 rounded-full inset-ring-amber-500" alt="profile" />
                     </button>
 
@@ -48,13 +48,13 @@ const Navbar = () => {
                             )}
 
                             {!isLogIn && (
-                                <Link to="/login" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <Link to="/login" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
                                     Login
                                 </Link>
                             )}
 
                             {isLogIn && (
-                                <Link to="/logout" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                <Link to="/logout" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
                                     Logout
                                 </Link>
                             )}

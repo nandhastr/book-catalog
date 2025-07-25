@@ -10,5 +10,4 @@ const getFindUser = async (criteria) => {
     }
 };
 
-
 export default getFindUser;

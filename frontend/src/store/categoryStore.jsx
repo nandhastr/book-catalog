@@ -9,7 +9,7 @@ const useCategoryStore = create((set) => ({
     error: null,
 
     fetchCategories: async () => {
-        set({ loading: true});
+        set({ loading: true });
         try {
             const res = await categoryAPI.getAll();
             set({ categories: res.data, loading: false });

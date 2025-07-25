@@ -94,7 +94,7 @@ const AuthForm = ({ title, subtitle, buttonText, isLogin, onSubmit }) => {
                                 Belum punya akun?
                             </Link>
                         ) : (
-                                <Link to="/login" className="text-blue-600 hover:underline">
+                            <Link to="/login" className="text-blue-600 hover:underline">
                                 Sudah punya akun?
                             </Link>
                         )}
